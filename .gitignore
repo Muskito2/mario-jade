@@ -1,0 +1,17 @@
+/build/
+/.gradle/
+gradle-app.setting
+# not ignore the jar and properties
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+.classpath
+.project
+.settings/
+/bin/
+
+.DS_Store
+Thumbs.db
+
+!gradlew
+!gradlew.bat
+!build.gradle
