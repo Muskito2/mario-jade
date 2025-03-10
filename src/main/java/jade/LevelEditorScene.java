@@ -8,8 +8,6 @@ import java.nio.IntBuffer;
 
 import org.lwjgl.BufferUtils;
 
-import kotlin.jvm.internal.MagicApiIntrinsics;
-
 public class LevelEditorScene extends Scene {
 	private String vertexShaderSrc = "#version 330 core\r\n" + 
 			"\r\n" + 
@@ -34,6 +32,7 @@ public class LevelEditorScene extends Scene {
 			"{\r\n" + 
 			"    color = fColor;\r\n" + 
 			"}";
+	
 	private int vertexID, fragmentID, shaderProgram;
 	
 	private float[] vertexArray = {
@@ -110,7 +109,7 @@ public class LevelEditorScene extends Scene {
 			System.out.println(glGetProgramInfoLog(shaderProgram, len));
 			//assert false : "";
 		}
-		
+		// END OF COMPILE AND LINK SHADERS
 		
 		// VAO, VBO, EBO buffer objects, and send to GPU
 		vaoID = glGenVertexArrays();
@@ -164,12 +163,7 @@ public class LevelEditorScene extends Scene {
 		// Unbind everything
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
-		
 		glBindVertexArray(0);
-		
 		glUseProgram(0);
-		
-		
 	}
-
 }
