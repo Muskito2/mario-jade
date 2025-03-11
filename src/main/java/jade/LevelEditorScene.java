@@ -1,7 +1,7 @@
 package jade;
 
 //import java.awt.event.KeyEvent;
-import static org.lwjgl.opengl.GL33.*; // Replace individual static import, but not totally for now
+import static org.lwjgl.opengl.GL33.*; // Could be replaced by individual static import
 
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -11,29 +11,6 @@ import org.lwjgl.BufferUtils;
 import renderer.Shader;
 
 public class LevelEditorScene extends Scene {
-	private String vertexShaderSrc = "#version 330 core\r\n" + 
-			"\r\n" + 
-			"layout (location=0) in vec3 aPos;\r\n" + 
-			"layout (location=1) in vec4 aColor;\r\n" + 
-			"\r\n" + 
-			"out vec4 fColor;\r\n" + 
-			"\r\n" + 
-			"void main()\r\n" + 
-			"{\r\n" + 
-			"    fColor = aColor;\r\n" + 
-			"    gl_Position = vec4(aPos, 1.0);	\r\n" + 
-			"}";
-	private String fragmentShaderSrc = "#version 330 core\r\n" + 
-			"\r\n" + 
-			"in vec4 fColor;\r\n" + 
-			"\r\n" + 
-			"\r\n" + 
-			"out vec4 color;\r\n" + 
-			"\r\n" + 
-			"void main()\r\n" + 
-			"{\r\n" + 
-			"    color = fColor;\r\n" + 
-			"}";
 	
 	private float[] vertexArray = {
 		// position					// color
@@ -56,7 +33,7 @@ public class LevelEditorScene extends Scene {
 			0, 1, 3, // Bottom left triangle
 	};
 	
-	private int vaoID, vboID, eboID; // vertex array object, buffer object, element buffer object
+	private int vaoID, vboID, eboID; // vertex array object, vertex buffer object, element buffer object
 	
 	private Shader defaultShader; 
 	
@@ -98,10 +75,10 @@ public class LevelEditorScene extends Scene {
 		// Add the vertex attributes pointers
 		int positionSize = 3;
 		int colorSize = 4;
-		int floatSizeBytes = 4; // magic number or not... but we know a float is 4 bytes
+		int floatSizeBytes = 4; // We know a float is 4 bytes in Java
 		int vertexSizeBytes = (positionSize + colorSize) * floatSizeBytes;
-		glVertexAttribPointer(0, positionSize, GL_FLOAT, false, vertexSizeBytes, 0); // the offset is 0
-		glEnableVertexAttribArray(0); // at 0 we are putting the position
+		glVertexAttribPointer(0, positionSize, GL_FLOAT, false, vertexSizeBytes, 0); // The offset is 0
+		glEnableVertexAttribArray(0); // At 0 we are putting the position...
 		
 		glVertexAttribPointer(1, colorSize, GL_FLOAT, false, vertexSizeBytes, positionSize * floatSizeBytes);
 		glEnableVertexAttribArray(1);

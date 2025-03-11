@@ -1,4 +1,5 @@
 package renderer;
+
 import static org.lwjgl.opengl.GL11.GL_FALSE;
 import static org.lwjgl.opengl.GL20.GL_COMPILE_STATUS;
 import static org.lwjgl.opengl.GL20.GL_FRAGMENT_SHADER;
@@ -38,8 +39,8 @@ public class Shader {
 			String source = new String(Files.readAllBytes(Paths.get(this.filepath))); // Opening and loading the file
 			String[] splitString = source.split("(#type)( )+([a-zA-Z]+)"); // ( )+ match any spaces
 			// Note: Array = iterator, testing it:
-//			for (String thestring : splitString) {
-//				System.out.println(thestring);
+//			for (String theString : splitString) {
+//				System.out.println(theString);
 //			}
 			// splitString[0] is empty because it captures the empty string before the first match
 			
@@ -123,17 +124,14 @@ public class Shader {
 					System.out.println(glGetProgramInfoLog(shaderProgramID, len));
 					//assert false : "";
 				}
-		
 	}
 	
 	public void use() {
 		// Bind shader program
 		glUseProgram(shaderProgramID);
-		
 	}
 	
 	public void detach() {
 		glUseProgram(0);
-		
 	}
 }
