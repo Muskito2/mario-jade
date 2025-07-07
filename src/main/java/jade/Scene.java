@@ -2,6 +2,8 @@ package jade;
 
 public abstract class Scene { // Going to implements some methods
 	
+	protected Camera camera;
+	
 	public Scene() {
 		
 	}

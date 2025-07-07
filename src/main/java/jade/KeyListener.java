@@ -3,9 +3,20 @@ package jade;
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
+/**
+ * 
+ * The class to manage mouse events.
+ * 
+ * The class declare the callbacks GLFW will call when a key (from keyboard or controller) is pressed or released.
+ * The usage can be found in the init mehtod of the window, {@link jade.Window#init()}
+ * 
+ * @author Antoine
+ * 
+ *
+ */
 public class KeyListener {
 	private static KeyListener instance;
-	private boolean keyPressed[] = new boolean[350];
+	private boolean keyPressed[] = new boolean[350]; // about 350 bindings in GFLW
 	
 	private KeyListener() {
 		

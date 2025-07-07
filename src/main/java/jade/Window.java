@@ -2,9 +2,7 @@ package jade;
 
 import org.lwjgl.*;
 import org.lwjgl.opengl.*;
-
 import util.Time;
-
 import org.lwjgl.glfw.GLFWErrorCallback;
 //import org.lwjgl.system.*;
 //import java.nio.*;
@@ -15,29 +13,75 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.*;
 //import static org.lwjgl.system.MemoryStack.*;
 
+/**
+ * 
+ * The window containing all the graphics elements of the application.
+ *
+ * @version 1.0
+ */
+@SuppressWarnings("unused")
 public class Window {
+	
+	/**
+	 * The dimensions of the window.
+	 */
 	private int width, height;
+	/**
+	 * The title of the window.
+	 */
 	private String title;
-	private long glfwWindow; // this number is the address where the window is in the memory
+	/**
+	 * The address where the window is in the memory.
+	 */
+	private long glfwWindow;
+	/**
+	 * A color value in the RGBA system.
+	 */
 	public float r, g, b, a; // PUBLIC TEMPORARY
 	//private boolean fadeToBlack = false; // test TO REMOVE
-	
-	private static Window window = null; // can be a Window, initially null
-	
-	// Add more components
+	/**
+	 * The single window belonging making up the class.
+	 */
+	private static Window window = null;
+	/**
+	 * The Scene currently displayed in the window.
+	 */
 	private static Scene currentScene;
 	
+	/**
+	 * The constructor of the class Window.
+	 * 
+	 * There is no parameters and every attribute are given arbitrary value from the constructor.
+	 */
 	private Window() { // ensure the Window class is a singleton ; we only want one Window object 
-		this.width = 2560;
-		this.height = 1400;
+		
+		this.width = 1920;
+		this.height = 1080;
 		this.title = "MarioWorld";
-		r=1;
-		b=1;
-		g=1;
-		a=1;
+		this.r=1;
+		this.b=1;
+		this.g=1;
+		this.a=1;
 	}
 	
-	// Update scene
+	/**
+	 * 
+	 * @return The singleton window.
+	 */
+	public static Window get() {
+		if (Window.window == null ) {
+			Window.window = new Window();
+		}
+		
+		return Window.window;
+	}
+	
+	/**
+	 * 
+	 * Update the scene.
+	 * 
+	 * @param newScene The reference number of the new scene to display.
+	 */
 	public static void changeScene(int newScene) {
 		switch (newScene) {
 		case 0:
@@ -54,20 +98,15 @@ public class Window {
 		}
 	}
 	
-	public static Window get() {
-		if (Window.window == null ) { // Possible to just say window
-			Window.window = new Window();
-		}
-		
-		return Window.window;
-	}
-	
+	/**
+	 * Initiate the window code of the application. It calls {@link #init()} (for system window and OpenGL context) and {@link #loop()} (for the game loop)
+	 */
 	public void run() {
-		System.out.println("Hello LWGJL" + Version.getVersion() + "!");
+		//System.out.println("Hello LWGJL " + Version.getVersion() + "!");
 		
 		init();
 		
-		loop();
+		loop(); // Execute on one thread only, code after only execute when the looping stops.
 		
 		// Free the memory
 		glfwFreeCallbacks(glfwWindow);
@@ -78,6 +117,11 @@ public class Window {
 		glfwSetErrorCallback(null).free();
 	}
 	
+	/**
+	 * Initialize the window with LWJGL which contains the GLFW library. This make possible to create a window, an open GL context and manage input.
+	 * 
+	 * This code is mostly taken from the GLFW tutorial on the LWJGL website.
+	 */
 	public void init() {
 		// Setup an error callback
 		GLFWErrorCallback.createPrint(System.err).set(); // will print errors using System.err.println...
@@ -94,14 +138,13 @@ public class Window {
 		glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 		
 		
-		// Create the window
+		// Create the window and return the handle (memory address)
 		glfwWindow = glfwCreateWindow(this.width, this.height, this.title, NULL, NULL);
-		// glfwCreateWindow returned the handle (memory address)
 		if (glfwWindow == NULL) {
 			throw new IllegalStateException("Failed to create the GLFW window");
 		}
 		
-		// Add the input callbacks
+		// Add the input callbacks // LISTENER
 		glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
 		glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
 		glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
@@ -121,24 +164,32 @@ public class Window {
 		// creates the GLCapabilities instance and makes the OpenGL
 		// bindings available for use.
 		GL.createCapabilities();
-		Time.getTimeStarted(); // TO REMOVE
-		Window.changeScene(0); // To be sure we are in a scene initially
+		Window.changeScene(0); // Showing LevelEditorScene
 	}
 	
+	/**
+	 * Enable a time based application by looping. The goal is to have the game time to be independent from the time it takes for the frame to render.
+	 */
 	public void loop() {
-		float beginTime = Time.getTime(); // Initialize variable for the time that the frame begin
-		float endTime;
-		float dt = -1.0f;
+		
+		double beginTime = Time.getTime(); // Initialize variable for the time that the frame begin
+		double endTime;
+		float dt = -1;
 		
 		while (!glfwWindowShouldClose(glfwWindow)) {
-			// Poll events
+//	            try {
+//	                Thread.sleep((long) 100);
+//	            } catch (InterruptedException e) {
+//	                e.printStackTrace();
+//	            }
+			// Polls events, calls the inputs callbacks.
 			glfwPollEvents();
 			
 			glClearColor(r, g, b, a);
 			glClear(GL_COLOR_BUFFER_BIT);
 			
 			if (dt >= 0) {
-				currentScene.update(dt); // lag of two frames, ok for now
+				currentScene.update(dt); // Lag of two frames, ok for now
 			}
 			
 //			if (fadeToBlack) {
@@ -155,8 +206,8 @@ public class Window {
 			glfwSwapBuffers(glfwWindow);
 			
 			endTime = Time.getTime();
-			dt = endTime - beginTime; // not used
-			beginTime = endTime; // record interruption time lost
+			dt = (float)(endTime - beginTime);
+			beginTime = endTime;
 		}
 	}
 }
