@@ -4,6 +4,12 @@ import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
+/**
+ * The matrix manipulation of the world, which make the camera.
+ * 
+ * @author antoi
+ * @see LevelEditorScene
+ */
 public class Camera {
 	private Matrix4f projectionMatrix, viewMatrix;
 	public Vector2f position;
@@ -32,6 +38,10 @@ public class Camera {
 		return this.viewMatrix;
 	}
 	
+	/**
+	 * 
+	 * @return the projection matrix
+	 */
 	public Matrix4f getProjectionMatrix() {
 		return this.projectionMatrix;
 	}

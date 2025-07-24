@@ -1,2 +1,2 @@
--- July 6th, 2025 Alpha 1.1.2 Reviewing code and adding comments
-- Most work done from June 28th to July 6th
+-- July 24th, 2025 WIP 1.1.3 Small changes and docs
+-- Replaced Alpha version name with WIP

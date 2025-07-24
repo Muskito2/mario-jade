@@ -8,14 +8,14 @@ import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
  * The class to manage mouse events.
  * 
  * The class declare the callbacks GLFW will use when the mouse is pressed or released.
- * The usage can be found in the init mehtod of the window, {@link jade.Window#init()}
+ * The usage can be found in the init method of the window, {@link jade.Window#init()}
  * 
  * @author Antoine
  * 
  *
  */
 public class MouseListener {
-	private static MouseListener instance; // initially null
+	private static MouseListener instance; // Initially null
 	private double scrollX, scrollY;
 	private double xPos, yPos, lastY, lastX;
 	private boolean mouseButtonPressed[] = new boolean[3];
@@ -54,7 +54,7 @@ public class MouseListener {
 	
 	public static void mouseButtonCallback(long window, int button, int action, int mods) {
 		if (action == GLFW_PRESS) {
-			if (button < get().mouseButtonPressed.length) { // protection
+			if (button < get().mouseButtonPressed.length) { // Protection
 				get().mouseButtonPressed[button] = true;
 			}
 			

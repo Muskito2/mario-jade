@@ -10,7 +10,14 @@ import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
 import renderer.Shader;
+import util.Time;
 
+/**
+ * The scene for game level editing. Extends {@link jade.Scene}.
+ * 
+ * @author antoi
+ *
+ */
 public class LevelEditorScene extends Scene {
 	// inherit Camera camera
 	private float[] vertexArray = {
@@ -87,15 +94,15 @@ public class LevelEditorScene extends Scene {
 	}
 	
 	@Override
-	// Use this to transition to another scene
 	public void update(float dt) {
 		camera.position.x -= dt * 50.0f;
+		camera.position.y -= dt * 20.0f; // !!! forgot !!!
 		//System.out.println(1.0f / dt + " FPS");
 		defaultShader.use();
-		
-		//NEW
 		defaultShader.uploadMat4f("uProjection", camera.getProjectionMatrix());
 		defaultShader.uploadMat4f("uView", camera.getViewMatrix());
+		defaultShader.uploadFloat("uTime", (float) Time.getTime()); // Cast in float because time is in double
+		
 		
 		// Bind the VAO that we're using
 		glBindVertexArray(vaoID);
