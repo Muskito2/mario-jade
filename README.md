@@ -1,2 +1,2 @@
--- July 24th, 2025 WIP 1.1.3 Small changes and docs
--- Replaced Alpha version name with WIP
+-- August 6th, 2025 Dev 1.2.0 Texture Shaders
+-- Replaced WIP by Dev
