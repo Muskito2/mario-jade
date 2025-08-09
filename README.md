@@ -1,2 +1,1 @@
--- August 6th, 2025 Dev 1.2.0 Texture Shaders
--- Replaced WIP by Dev
+-- August 6th, 2025 Dev 1.2.1 Texture Shaders Multi-Channel Support
