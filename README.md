@@ -1,1 +1,1 @@
--- August 6th, 2025 Dev 1.2.1 Texture Shaders Multi-Channel Support
+-- August 12th, 2025 Dev 1.2.2 Create Component and GameObject + Updating Scene
