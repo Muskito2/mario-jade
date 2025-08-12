@@ -1,1 +1,1 @@
--- August 12th, 2025 Dev 1.2.2 Create Component and GameObject + Updating Scene
+-- August 12th, 2025 Dev 1.2.3 Entity-Component testing 1
