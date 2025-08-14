@@ -9,6 +9,7 @@ import java.nio.IntBuffer;
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
+import components.FontRenderer;
 import components.SpriteRenderer;
 import renderer.Shader;
 import renderer.Texture;
@@ -62,6 +63,7 @@ public class LevelEditorScene extends Scene {
 		System.out.println("Creating 'test object'");
 		this.testObj = new GameObject("test object");
 		this.testObj.addComponent(new SpriteRenderer());
+		this.testObj.addComponent(new FontRenderer());
 		this.addGameObjectToScene(this.testObj);
 		
 		this.camera = new Camera(new Vector2f());

@@ -1,1 +1,3 @@
--- August 12th, 2025 Dev 1.2.3 Entity-Component testing 1
+-- August 13th, 2025 Dev 1.3.0
+- entity-component v1
+- 4:06:22 in tutorial
