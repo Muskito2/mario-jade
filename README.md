@@ -1,5 +1,2 @@
--- August 18th, 2025 Dev 1.4.0 Completed batch rendering
-- GameObject, SpriteRenderer, Scene and Window update
-- Created Transform, Renderer and RenderBatch classes
-- Cleaned up LevelEditorScene to use batch rendering
-- Added the test of rendering 10 000 quads, without texture
+-- August 18th, 2025 Dev 1.4.1 Cleaned up important comments
+- 1.4.0 Completed batch rendering

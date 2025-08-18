@@ -4,14 +4,12 @@ import org.lwjgl.*;
 import org.lwjgl.opengl.*;
 import util.Time;
 import org.lwjgl.glfw.GLFWErrorCallback;
-//import org.lwjgl.system.*;
-//import java.nio.*;
 
 import static org.lwjgl.glfw.Callbacks.*;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.*;
-//import static org.lwjgl.system.MemoryStack.*;
+
 
 /**
  * 
@@ -38,7 +36,6 @@ public class Window {
 	 * A color value in the RGBA system.
 	 */
 	public float r, g, b, a; // PUBLIC TEMPORARY
-	//private boolean fadeToBlack = false; // test TO REMOVE
 	/**
 	 * The single window belonging making up the class.
 	 */
@@ -108,7 +105,6 @@ public class Window {
 	 * Initiate the window code of the application. It calls {@link #init()} (for system window and OpenGL context) and {@link #loop()} (for the game loop)
 	 */
 	public void run() {
-		//System.out.println("Hello LWGJL " + Version.getVersion() + "!");
 		
 		init();
 		
@@ -183,11 +179,6 @@ public class Window {
 		float dt = -1;
 		
 		while (!glfwWindowShouldClose(glfwWindow)) {
-//	            try {
-//	                Thread.sleep((long) 100);
-//	            } catch (InterruptedException e) {
-//	                e.printStackTrace();
-//	            }
 			// Polls events, calls the inputs callbacks.
 			glfwPollEvents();
 			
@@ -198,16 +189,6 @@ public class Window {
 				currentScene.update(dt); // Lag of two frames, ok for now
 			}
 			
-//			if (fadeToBlack) {
-//				r = Math.max(r - 0.01f, 0);
-//				g = Math.max(r - 0.01f, 0);
-//				b = Math.max(r - 0.01f, 0);
-//			}
-//			
-//			if (KeyListener.isKeyPressed(GLFW_KEY_SPACE)) {
-//				//System.out.println("space key is pressed");
-//				fadeToBlack = true;
-//			}
 			
 			glfwSwapBuffers(glfwWindow);
 			

@@ -3,8 +3,8 @@
 layout (location=0) in vec3 aPos;
 layout (location=1) in vec4 aColor;
 
-uniform mat4 uProjection;// for upload
-uniform mat4 uView;// for upload
+uniform mat4 uProjection;
+uniform mat4 uView;
 
 out vec4 fColor;
 
@@ -25,5 +25,3 @@ void main()
 {
 	color = fColor;
 }
-
-// see science-and-fiction.org noise

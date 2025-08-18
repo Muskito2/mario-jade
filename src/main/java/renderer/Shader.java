@@ -60,12 +60,6 @@ public class Shader {
 		try {
 			String source = new String(Files.readAllBytes(Paths.get(this.filepath))); // Opening and loading the file
 			String[] splitString = source.split("(#type)( )+([a-zA-Z]+)"); // ( )+ match any spaces
-			// Note: Array = iterator, testing it:
-//			for (String theString : splitString) {
-//				System.out.println(theString);
-//			}
-			// splitString[0] is empty because it captures the empty string before the first match
-			
 			
 			// Find the first pattern (GLSL type)
 			int index = source.indexOf("#type") + 6; // In our file, the first #type is at index 0
@@ -93,9 +87,6 @@ public class Shader {
 			e.printStackTrace();
 			assert false : "Error: Could not open file for shader: '" + this.filepath + "'";
 		}
-		
-//		System.out.println(vertexSource);
-//		System.out.println(fragmentSource);
 		
 	}
 	
