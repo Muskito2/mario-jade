@@ -76,6 +76,10 @@ public class Window {
 		return Window.window;
 	}
 	
+	public static Scene getScene() {
+		return get().currentScene;
+	}
+	
 	/**
 	 * 
 	 * Update the scene.
