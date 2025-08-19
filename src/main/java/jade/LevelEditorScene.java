@@ -4,6 +4,7 @@ import org.joml.Vector2f;
 import org.joml.Vector4f;
 
 import components.SpriteRenderer;
+import util.AssetPool;
 
 /**
  * The scene for game level editing. Extends {@link jade.Scene}.
@@ -41,6 +42,12 @@ public class LevelEditorScene extends Scene {
 				this.addGameObjectToScene(go);
 			}
 		}
+		
+		loadRessources();
+	}
+	
+	private void loadRessources() {
+		AssetPool.getShader("assets/shaders/default.glsl");
 	}
 	
 	@Override
