@@ -1,2 +1,1 @@
--- August 18th, 2025 Dev 1.4.2 Asset pool + Texture batching
-- 1.4.0 Completed batch rendering
+-- September 12th, 2025 Dev 1.4.2-v2 Asset pool + Texture batching

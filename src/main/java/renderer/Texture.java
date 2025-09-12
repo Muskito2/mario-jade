@@ -1,6 +1,7 @@
 package renderer;
 
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.stb.STBImage.stbi_set_flip_vertically_on_load;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
@@ -34,6 +35,7 @@ public class Texture {
 		IntBuffer width = BufferUtils.createIntBuffer(1);
 		IntBuffer height = BufferUtils.createIntBuffer(1);
 		IntBuffer channels = BufferUtils.createIntBuffer(1);
+		stbi_set_flip_vertically_on_load(true);
 		ByteBuffer image = stbi_load(filepath, width, height, channels, 0); // image cloning library, can force conversion to 4 channels (RGBA) by replacing the 0 by 4
 		
 		if (image != null) {

@@ -7,7 +7,7 @@ import components.SpriteRenderer;
 import jade.GameObject;
 
 public class Renderer {
-	private final int MAX_BATCH_SIZE = 15; // 75 for now (150-185 fps), test later with 15 (80 fps), and put it at 1000 for release
+	private final int MAX_BATCH_SIZE = 2000; // 75 for now (150-185 fps), test later with 15 (80 fps), and put it at 1000 for release
 	private List<RenderBatch> batches;
 	
 	public Renderer() {
