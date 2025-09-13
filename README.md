@@ -1,1 +1,1 @@
--- September 12th, 2025 Dev 1.4.2-v2 Asset pool + Texture batching
+-- September 12th, 2025 Dev 1.4.3 Texture slot occupied gate
