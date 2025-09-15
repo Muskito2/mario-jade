@@ -1,1 +1,1 @@
--- September 12th, 2025 Dev 1.4.3 Texture slot occupied gate
+-- September 15th, 2025 Dev 1.5: Adding spritesheets
