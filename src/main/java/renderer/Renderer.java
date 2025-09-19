@@ -6,6 +6,13 @@ import java.util.List;
 import components.SpriteRenderer;
 import jade.GameObject;
 
+/**
+ * The master renderer which create and render the batches. See {@link renderer.RenderBatch}.
+ * 
+ * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
+ *
+ */
 public class Renderer {
 	private final int MAX_BATCH_SIZE = 2000; // 75 for now (150-185 fps), test later with 15 (80 fps), and put it at 1000 for release
 	private List<RenderBatch> batches;

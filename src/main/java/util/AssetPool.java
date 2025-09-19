@@ -9,6 +9,13 @@ import java.util.Map;
 
 import components.Spritesheet;
 
+/**
+ * The utility class which store the assets in order to keep them avalaible in memory.
+ * 
+ * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
+ *
+ */
 public class AssetPool {
 	private static Map<String, Shader> shaders = new HashMap<>();
 	private static Map<String, Texture> textures = new HashMap<>();

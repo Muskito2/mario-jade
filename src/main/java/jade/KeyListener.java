@@ -10,7 +10,8 @@ import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
  * The class declare the callbacks GLFW will call when a key (from keyboard or controller) is pressed or released.
  * The usage can be found in the init mehtod of the window, {@link jade.Window#init()}
  * 
- * @author Antoine
+ * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
  * 
  *
  */

@@ -15,7 +15,7 @@ import static org.lwjgl.system.MemoryUtil.*;
  * 
  * The window containing all the graphics elements of the application.
  *
- * @version 1.0
+ * @version Dev 1.6 Dirty Flags in Rendering
  */
 @SuppressWarnings("unused")
 public class Window {

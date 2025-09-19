@@ -10,7 +10,8 @@ import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
  * The class declare the callbacks GLFW will use when the mouse is pressed or released.
  * The usage can be found in the init method of the window, {@link jade.Window#init()}
  * 
- * @author Antoine
+ * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
  * 
  *
  */

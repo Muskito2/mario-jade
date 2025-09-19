@@ -8,6 +8,7 @@ import org.joml.Vector3f;
  * The matrix manipulation of the world, which make the camera.
  * 
  * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
  * @see LevelEditorScene
  */
 public class Camera {

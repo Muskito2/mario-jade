@@ -43,6 +43,7 @@ import org.lwjgl.BufferUtils;
  * Abstract the use of shaders with GLSL file loading, parsing, compiling, linking and GPU loading. GLSL documentation can be viewed on docs.gl and khronos.org.
  * 
  * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
  *
  */
 public class Shader {

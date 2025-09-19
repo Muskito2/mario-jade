@@ -7,6 +7,13 @@ import org.joml.Vector2f;
 
 import renderer.Texture;
 
+/**
+ * The representaiton of a spritesheet in an ArrayList.
+ * 
+ * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
+ *
+ */
 public class Spritesheet {
 	private Texture texture;
 	private List<Sprite> sprites;

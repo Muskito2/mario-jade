@@ -10,43 +10,59 @@ import util.AssetPool;
  * The scene for game level editing. Extends {@link jade.Scene}.
  * 
  * @author antoi
- * @version 2.0 Major changes in Dev 1.4.0
+ * @version  Dev 1.6 Dirty Flags in Rendering
  *
  */
 public class LevelEditorScene extends Scene {
 	
+	private GameObject obj1;
+	private Spritesheet sprites;
+	
 	/* Constructor */
 	public LevelEditorScene() {
-		System.out.println("");
 	}
 	
 	@Override
 	public void init() {
-		loadRessources();
+		loadResources();
 		
 		this.camera = new Camera(new Vector2f());
 		
-		Spritesheet sprites = AssetPool.getSpritesheet("assets/images/spritesheet.png");
+		sprites = AssetPool.getSpritesheet("assets/images/spritesheet.png");
 		
-		GameObject obj1 = new GameObject("Object 1", new Transform(new Vector2f(100,100), new Vector2f(256,256)));
+		obj1 = new GameObject("Object 1", new Transform(new Vector2f(100,100), new Vector2f(256,256)));
 		obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
 		this.addGameObjectToScene(obj1);
 		
 		GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(400,100), new Vector2f(256,256)));
-		obj2.addComponent(new SpriteRenderer(sprites.getSprite(15)));
+		obj2.addComponent(new SpriteRenderer(sprites.getSprite(2)));
 		this.addGameObjectToScene(obj2);
 	}
 	
-	private void loadRessources() {
+	private void loadResources() {
 		AssetPool.getShader("assets/shaders/default.glsl");
 		
 		AssetPool.addSpritesheet("assets/images/spritesheet.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheet.png"), 
 				16, 16, 26, 0));
 	}
 	
+	private int spriteIndex = 0;
+	private float spriteFlipTime = 0.2f;
+	private float spriteFlipTimeLeft = 0.0f;
 	@Override
 	public void update(float dt) {
 		//System.out.println(1.0f / dt + " FPS");
+		
+		spriteFlipTimeLeft -= dt;
+		if (spriteFlipTimeLeft <= 0) {
+			spriteFlipTimeLeft = spriteFlipTime;
+			spriteIndex++;
+			if (spriteIndex > 4) {
+				spriteIndex = 0;
+			}
+			obj1.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
+		}
+		//obj1.transform.position.x += 10 * dt;
 
 		for (GameObject go : this.gameObjects) {
 			go.update(dt);

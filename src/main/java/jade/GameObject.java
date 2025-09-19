@@ -3,6 +3,15 @@ package jade;
 import java.util.ArrayList;
 import java.util.List;
 
+import components.Sprite;
+
+/**
+ * The class that does mysterious abstraction. It seems the SpriteRenderer extends Component, therefore having access to GameObject.
+ * 
+ * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
+ *
+ */
 public class GameObject {
 	
 	private String name;

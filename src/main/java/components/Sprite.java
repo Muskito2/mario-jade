@@ -3,6 +3,13 @@ package components;
 import org.joml.Vector2f;
 import renderer.Texture;
 
+/**
+ * The sprite which is a container for its {@link renderer.Texture}.
+ * 
+ * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
+ *
+ */
 public class Sprite {
 
 	private Texture texture;

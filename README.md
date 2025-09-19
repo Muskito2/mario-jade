@@ -1,1 +1,1 @@
--- September 15th, 2025 Dev 1.5: Adding spritesheets
+-- September 19th, 2025 Dev 1.6 Dirty Flags in Rendering + Docs

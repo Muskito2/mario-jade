@@ -9,6 +9,7 @@ import renderer.Renderer;
  * Abstract class for a scene displayed on screen. A scene manage the time elapsed for what happens inside the scene via the {@link update()} method.
  * 
  * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
  *
  */
 public abstract class Scene {

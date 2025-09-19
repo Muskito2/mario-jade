@@ -6,6 +6,7 @@ package util;
  * The time given is in double while it's in float in the tutorial.
  * 
  * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
  *
  */
 public class Time {

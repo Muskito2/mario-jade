@@ -12,6 +12,13 @@ import components.SpriteRenderer;
 import jade.Window;
 import util.AssetPool;
 
+/**
+ * The batch to render of a variable size containing {@link components.SpriteRenderer}.
+ * 
+ * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
+ *
+ */
 public class RenderBatch {
 
 
@@ -43,6 +50,7 @@ public class RenderBatch {
 	private int vaoID, vboID;
 	private int maxBatchSize;
 	private Shader shader;
+	private boolean rebufferData = true;
 	
 	public RenderBatch(int maxBatchSize) {
 		shader = AssetPool.getShader("assets/shaders/default.glsl");
@@ -110,9 +118,21 @@ public class RenderBatch {
 	}
 	
 	public void render() {
-		// For now, we will rebuffer all data every frame
-		glBindBuffer(GL_ARRAY_BUFFER, vboID);
-		glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
+		for (int i = 0; i < numSprites; i++) {
+			SpriteRenderer spr = sprites[i];
+			if (spr.isDirty()) {
+				loadVertexProperties(i); // Update the content sent to GPU
+				spr.setClean();
+				rebufferData = true;
+			}
+		}
+		
+		if (rebufferData) {
+			// For now, we will rebuffer all data every frame, so the GPU think everything is to redraw each frame
+			glBindBuffer(GL_ARRAY_BUFFER, vboID);
+			glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
+		}
+		
 		
 		// Use shader
 		shader.use();

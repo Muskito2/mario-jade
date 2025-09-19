@@ -10,6 +10,13 @@ import org.lwjgl.BufferUtils;
 import static org.lwjgl.stb.STBImage.stbi_load;
 import static org.lwjgl.stb.STBImage.stbi_image_free;
 
+/**
+ * The OpenGL texture abstraction.
+ * 
+ * @author antoi
+ * @version  Dev 1.6 Dirty Flags in Rendering
+ *
+ */
 public class Texture {
 	private String filepath;
 	private int texID;
