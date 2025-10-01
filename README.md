@@ -1,1 +1,1 @@
--- October 1st, 2025 Dev 1.6.1 Dirty Flags in Rendering Fix + Images for next step
+-- October 1st, 2025 Dev 1.7.0 Z-Index + Setup Dear ImGui (Spair version) Demo

@@ -35,6 +35,8 @@ public class Window {
 	/**
 	 * A color value in the RGBA system.
 	 */
+	
+	private ImGuiLayer imGuiLayer;
 	public float r, g, b, a; // PUBLIC TEMPORARY
 	/**
 	 * The single window belonging making up the class.
@@ -152,6 +154,11 @@ public class Window {
 		glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
 		glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
 		
+		glfwSetWindowSizeCallback(glfwWindow, (w, newWidth, newHeight) -> {
+			Window.setWidth(newWidth);
+			Window.setHeight(newHeight);
+		});
+		
 		// Make the OpenGL context current
 		glfwMakeContextCurrent(glfwWindow);
 		// Enable v-sync: buffer swapping
@@ -169,6 +176,9 @@ public class Window {
 		
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+		
+		this.imGuiLayer = new ImGuiLayer(glfwWindow);
+		this.imGuiLayer.initImGui();
 		
 		Window.changeScene(0); // Showing LevelEditorScene
 	}
@@ -193,12 +203,29 @@ public class Window {
 				currentScene.update(dt); // Lag of two frames, ok for now
 			}
 			
-			
+			this.imGuiLayer.update(dt);
 			glfwSwapBuffers(glfwWindow);
 			
 			endTime = Time.getTime();
 			dt = (float)(endTime - beginTime);
 			beginTime = endTime;
 		}
+	}
+	
+	public static int getWidth() {
+		return get().width;
+	}
+	
+	public static int getHeight() {
+		return get().height;
+	}
+	
+	public static void setWidth(int newWidth) {
+		get().width = newWidth;
+		System.out.println("window size callback width changed");
+	}
+	
+	public static void setHeight(int newHeight) {
+		get().height = newHeight;
 	}
 }

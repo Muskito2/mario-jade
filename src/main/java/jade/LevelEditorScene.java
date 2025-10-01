@@ -31,13 +31,15 @@ public class LevelEditorScene extends Scene {
 		
 		sprites = AssetPool.getSpritesheet("assets/images/spritesheet.png");
 		
-		obj1 = new GameObject("Object 1", new Transform(new Vector2f(200,100), new Vector2f(256,256)));
+		obj1 = new GameObject("Object 1", 
+				new Transform(new Vector2f(200,100), new Vector2f(256,256)), 90);
 		obj1.addComponent(new SpriteRenderer(new Sprite(
 				AssetPool.getTexture("assets/images/blendImage1.png")
 		)));
 		this.addGameObjectToScene(obj1);
 		
-		GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(400,100), new Vector2f(256,256)));
+		GameObject obj2 = new GameObject("Object 2", 
+				new Transform(new Vector2f(400,100), new Vector2f(256,256)), 100);
 		obj2.addComponent(new SpriteRenderer(new Sprite(
 				AssetPool.getTexture("assets/images/blendImage2.png")
 		)));
@@ -51,9 +53,6 @@ public class LevelEditorScene extends Scene {
 				16, 16, 26, 0));
 	}
 	
-	private int spriteIndex = 0;
-	private float spriteFlipTime = 0.6f;
-	private float spriteFlipTimeLeft = 0.0f;
 	@Override
 	public void update(float dt) {
 		//System.out.println(1.0f / dt + " FPS");
