@@ -1,1 +1,1 @@
--- September 19th, 2025 Dev 1.6 Dirty Flags in Rendering + Docs
+-- October 1st, 2025 Dev 1.6.1 Dirty Flags in Rendering Fix + Images for next step

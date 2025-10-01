@@ -15,7 +15,7 @@ import static org.lwjgl.system.MemoryUtil.*;
  * 
  * The window containing all the graphics elements of the application.
  *
- * @version Dev 1.6 Dirty Flags in Rendering
+ * @version Dev 1.7 Blending
  */
 @SuppressWarnings("unused")
 public class Window {
@@ -166,6 +166,10 @@ public class Window {
 		// creates the GLCapabilities instance and makes the OpenGL
 		// bindings available for use.
 		GL.createCapabilities();
+		
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+		
 		Window.changeScene(0); // Showing LevelEditorScene
 	}
 	

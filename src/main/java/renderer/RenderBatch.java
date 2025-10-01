@@ -118,6 +118,7 @@ public class RenderBatch {
 	}
 	
 	public void render() {
+		boolean rebufferData = false; // forgot
 		for (int i = 0; i < numSprites; i++) {
 			SpriteRenderer spr = sprites[i];
 			if (spr.isDirty()) {

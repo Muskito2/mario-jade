@@ -47,7 +47,7 @@ public class LevelEditorScene extends Scene {
 	}
 	
 	private int spriteIndex = 0;
-	private float spriteFlipTime = 0.2f;
+	private float spriteFlipTime = 0.6f;
 	private float spriteFlipTimeLeft = 0.0f;
 	@Override
 	public void update(float dt) {
